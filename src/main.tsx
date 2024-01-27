@@ -7,7 +7,6 @@ import TouchPiano from "./TouchPiano";
 const App = () => {
   return (
     <div>
-      <h1>Home Page</h1>
       <TouchPiano />
     </div>
   );

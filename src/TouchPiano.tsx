@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { Synth } from "tone";
+import { Synth, start } from "tone";
 
 const TouchPiano = () => {
   const [synth, setSynth] = useState<Synth | null>(null);
@@ -10,7 +10,8 @@ const TouchPiano = () => {
     setSynth(newSynth);
   }, []);
 
-  const handleStartSound = (y: any) => {
+  const handleStartSound = async (y: any) => {
+    await start();
     if (synth) {
       const note = calculateNoteFromHeight(y);
       synth.triggerAttack(note);
@@ -64,9 +65,7 @@ const TouchPiano = () => {
       onMouseLeave={handleEndSound}
       onMouseMove={handleMouseMove}
       style={{ width: "100vw", height: "100vh", backgroundColor: "lightblue" }}
-    >
-      Touch or click here to play
-    </div>
+    />
   );
 };
 
