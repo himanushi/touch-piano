@@ -1,6 +1,7 @@
 import path from "path";
 import { defineConfig } from "vite";
 import { importToCDN } from "vite-plugin-external-cdn";
+import { VitePWA } from "vite-plugin-pwa";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
@@ -39,6 +40,31 @@ export default defineConfig({
           path: "https://unpkg.com/preact-router@4.1.1/dist/preact-router.umd.js",
         },
       ],
+    }),
+    VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: [],
+      manifest: {
+        name: "Piano App",
+        short_name: "Piano App",
+        description: "Piano App",
+        theme_color: "#ffffff",
+        icons: [
+          {
+            src: "./favicon.ico",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "./favicon.ico",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ["**/*"],
+      },
     }),
   ],
 });
