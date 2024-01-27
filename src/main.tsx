@@ -1,17 +1,15 @@
 import { render } from "preact";
-import { Route, Router } from "preact-router";
-import { Counter } from "~/Counter";
-import { Home } from "~/Home";
 
 import "~/theme/global.css";
 import "~/theme/variables.css";
+import TouchPiano from "./TouchPiano";
 
 const App = () => {
   return (
-    <Router>
-      <Route path="/" component={Home} />
-      <Route path="/counter" component={Counter} />
-    </Router>
+    <div>
+      <h1>Home Page</h1>
+      <TouchPiano />
+    </div>
   );
 };
 
